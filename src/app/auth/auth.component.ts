@@ -5,42 +5,42 @@ import { ThfDialogService } from '@totvs/thf-ui/services/thf-dialog';
 import { ThfPageLogin, ThfPageLoginCustomField, ThfPageLoginLiterals } from '@totvs/thf-templates/components/thf-page-login';
 
 @Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html'
+	selector: 'app-auth',
+	templateUrl: './auth.component.html'
 })
 export class AuthComponent  implements OnInit {
 
-  background: string;
-  contactEmail: string;
-  customField: ThfPageLoginCustomField;
-  customFieldOption: any;
-  customFieldOptions: Array<ThfSelectOption>;
-  customLiterals: ThfPageLoginLiterals;
-  environment: string;
-  exceededAttempts: number;
-  literals: string;
-  login: string;
-  loginPattern: string;
-  loginError: string;
-  loginErrors: Array<string>;
-  logo: string;
-  passwordError: string;
-  passwordErrors: Array<string>;
-  passwordPattern: string;
-  productName: string;
-  properties: Array<string>;
-  recovery: string;
-  registerUrl: string;
+	background: string;
+	contactEmail: string;
+	customField: ThfPageLoginCustomField;
+	customFieldOption: any;
+	customFieldOptions: Array<ThfSelectOption>;
+	customLiterals: ThfPageLoginLiterals;
+	environment: string;
+	exceededAttempts: number;
+	literals: string;
+	login: string;
+	loginPattern: string;
+	loginError: string;
+	loginErrors: Array<string>;
+	logo: string;
+	passwordError: string;
+	passwordErrors: Array<string>;
+	passwordPattern: string;
+	productName: string;
+	properties: Array<string>;
+	recovery: string;
+	registerUrl: string;
 
-  public readonly propertiesOptions: Array<ThfCheckboxGroupOption> = [
-    { value: 'hideRememberUser', label: 'Hide remember user' },
-    { value: 'loading', label: 'Loading' }
-  ];
+  	public readonly propertiesOptions: Array<ThfCheckboxGroupOption> = [
+		{ value: 'hideRememberUser', label: 'Hide remember user' },
+		{ value: 'loading', label: 'Loading' }
+  	];
 
   constructor(private thfDialog: ThfDialogService) { }
 
   ngOnInit() {
-    this.restore();
+	this.restore();
   }
 
   addCustomFieldOption() {
@@ -70,6 +70,8 @@ export class AuthComponent  implements OnInit {
   }
 
   loginSubmit(formData: ThfPageLogin) {
+	  /*login?us/*t-authentication-url="/dts/datasul-rest/resourceername=super&password=hFG6ihTXl1PTTLM7UbpGtLAl64E%3D"*/
+	  console.log(formData);
     if (this.exceededAttempts <= 0) {
       this.thfDialog.alert({
         title: 'Authenticate',

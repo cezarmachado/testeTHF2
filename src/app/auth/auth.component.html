@@ -1,11 +1,27 @@
-<thf-page-login></thf-page-login>
+<thf-page-login
+   t-blocked-url="/documentation/thf-page-blocked-user"
+  [t-background]="background"
+  [t-contact-email]="contactEmail"
+  [t-custom-field]="customField"
+  [t-environment]="environment"
+  [t-exceeded-attempts-warning]="exceededAttempts"
+  [t-hide-remember-user]="properties.includes('hideRememberUser')"
+  [t-loading]="properties.includes('loading')"
+  [t-literals]="customLiterals"
+  [t-login]="login"
+  [t-login-errors]="loginErrors"
+  [t-login-pattern]="loginPattern"
+  [t-logo]="logo"
+  [t-password-errors]="passwordErrors"
+  [t-password-pattern]="passwordPattern"
+  [t-product-name]="productName"
+  [t-recovery]="recovery"
+  [t-register-url]="registerUrl"
+  (t-login-submit)="loginSubmit($event)">
+</thf-page-login>
     
       
-    <!--thf-input
-        class="thf-lg-12"
-        name="literals">
-    </thf-input-->     
-  
+
  
 
 <!--thf-page-login
