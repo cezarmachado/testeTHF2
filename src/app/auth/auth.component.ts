@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ThfCheckboxGroupOption, ThfSelectOption } from '@totvs/thf-ui/components/thf-field';
 import { ThfDialogService } from '@totvs/thf-ui/services/thf-dialog';
 import { ThfPageLogin, ThfPageLoginCustomField, ThfPageLoginLiterals } from '@totvs/thf-templates/components/thf-page-login';
+import * as jsSHA from 'jssha';
 
 @Component({
 	selector: 'app-auth',
@@ -70,6 +71,17 @@ export class AuthComponent  implements OnInit {
   }
 
   loginSubmit(formData: ThfPageLogin) {
+
+	const headers = new Headers()
+		
+	let shaObj = new jsSHA("SHA-1", "TEXT");
+        shaObj.update(formData.password);
+        let hash = shaObj.getHash("B64");
+        //let hash = '' ;
+        let encoded = encodeURIComponent(hash);
+		let username = formData.login;
+		console.log(encoded)
+		console.log(username)
 	  /*login?us/*t-authentication-url="/dts/datasul-rest/resourceername=super&password=hFG6ihTXl1PTTLM7UbpGtLAl64E%3D"*/
 	  console.log(formData);
     if (this.exceededAttempts <= 0) {

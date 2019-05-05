@@ -26,7 +26,8 @@
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "@types/jssha": "0.0.29"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.11.3",
@@ -47,6 +48,9 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.1.6"
+    "typescript": "~3.1.6",
+    "sha1": "^1.1.1",
+    "sha1-es": "^1.8.2",
+    "jssha": "^2.3.1"
   }
 }
