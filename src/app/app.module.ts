@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HelloWorldComponent } from './hello-world/hello-world.component';
 import { AuthComponent } from './auth/auth.component';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -17,7 +18,8 @@ import { AuthComponent } from './auth/auth.component';
 	declarations: [
 		AppComponent,
 		HelloWorldComponent,
-		AuthComponent		
+		AuthComponent,
+		HomeComponent		
 	],
 	imports: [
 		BrowserModule,

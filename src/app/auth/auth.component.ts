@@ -89,12 +89,10 @@ export class AuthComponent  implements OnInit {
 			
 		shaObj.update(formData.password);
 		let hash = shaObj.getHash("B64");
-		//let hash = '' ;
 		let encoded = encodeURIComponent(hash);
 		let username = formData.login;
 		
-		console.log(encoded)
-		console.log(username)
+		
 
 		
 		this.http.get(`/dts/datasul-rest/resources/login?username=${username}&password=${encoded}`)
@@ -105,7 +103,7 @@ export class AuthComponent  implements OnInit {
 				"username": username,
 				"token"   : res.text()
 			}
-			console.log(user)
+			
 			localStorage.setItem('currentUser', JSON.stringify(user));
 			this.router.navigate(['/home']);
 			},
