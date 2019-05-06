@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
-//import {HttpClient, HttpHeaders} from '@angular/common/http'
-//import { Observable } from 'rxjs/Observable';
+import { Http } from '@angular/http';
+import { Router } from '@angular/router';
 
 import { ThfCheckboxGroupOption, ThfSelectOption } from '@totvs/thf-ui/components/thf-field';
 import { ThfDialogService } from '@totvs/thf-ui/services/thf-dialog';
 import { ThfPageLogin, ThfPageLoginCustomField, ThfPageLoginLiterals } from '@totvs/thf-templates/components/thf-page-login';
 import * as jsSHA from 'jssha';
-import { map, catchError } from 'rxjs/operators';
-import { empty } from 'rxjs';
+
 
 
 @Component({
@@ -46,7 +44,8 @@ export class AuthComponent  implements OnInit {
   	];
 
 	constructor(private thfDialog: ThfDialogService,
-				private http: Http
+				private http: Http,
+				private router: Router
 				) { }
 	
 	 //private http: Http,
@@ -97,51 +96,28 @@ export class AuthComponent  implements OnInit {
 		console.log(encoded)
 		console.log(username)
 
+		
 		this.http.get(`/dts/datasul-rest/resources/login?username=${username}&password=${encoded}`)
 			.subscribe((res) => {
-			console.log(res)
-		})
-		
-		
-		/*this.http.get(`/dts/datasul-rest/resources/login?username=super&password=hFG6ihTXl1PTTLM7UbpGtLAl64E%3D`)
-			.pipe(map((response: Response) => {
-				console.log('get')
-				const tokenn = response.text() ;
-				console.log(tokenn);
+			console.log(res.text() )
+			let user =
+			{
+				"username": username,
+				"token"   : res.text()
+			}
+			console.log(user)
+			localStorage.setItem('currentUser', JSON.stringify(user));
+			this.router.navigate(['/home']);
+			},
+			(error) => { 
 				this.thfDialog.alert({
-					title: 'Authenticate',
-					message: tokenn
+					title: 'ERRO',
+					message: 'Usuário ou senha  inválido'
 				  });
-			}),
-			catchError(( err, caught) => {
-				return empty();
-			})
-			)*/
-			
+			}
+		)		
   	}
-				/*=> {
-				const tokenn = response.text() ;
-				console.log('tokenn');
-				/*user.token = tokenn;
-				if (tokenn) {
-				// store username and jwt token in local storage to keep user logged in between page refreshes
-				//localStorage.setItem('currentUser', JSON.stringify(user));
-					return true ;
-				} else {
-					turn false ;
-				}
-		})*/
-		//.catch(error => this._serverError(error))
-    
-
-	  /*login?us/*t-authentication-url="/dts/datasul-rest/resourceername=super&password=hFG6ihTXl1PTTLM7UbpGtLAl64E%3D"*/
-	 /* console.log(formData);
-    if (this.exceededAttempts <= 0) {
-      this.thfDialog.alert({
-        title: 'Authenticate',
-        message: JSON.stringify(formData)
-      });
-    }*/
+			
   
 
   onChangeCustomProperties() {
