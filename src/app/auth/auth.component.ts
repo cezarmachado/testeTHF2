@@ -95,7 +95,7 @@ export class AuthComponent  implements OnInit {
 		
 
 		
-		this.http.get(`/dts/datasul-rest/resources/login?username=${username}&password=${encoded}`)
+		this.http.get(`http://localhost:8080/dts/datasul-rest/resources/login?username=${username}&password=${encoded}`)
 			.subscribe((res) => {
 			console.log(res.text() )
 			let user =
